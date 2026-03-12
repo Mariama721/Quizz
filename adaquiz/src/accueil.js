@@ -1,4 +1,9 @@
 const bouton = document.createElement("button");
 bouton.textContent = "Démarrer";
 document.body.appendChild(bouton);
-l,ok,
+
+bouton.addEventListener('click', async () => {
+const { questions } = await import('./questions.js')
+questions()
+})
+
