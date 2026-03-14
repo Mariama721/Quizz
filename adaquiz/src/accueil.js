@@ -1,13 +1,14 @@
 
-const bouton = document.createElement("button");
-bouton.textContent = "Démarrer";
-document.body.appendChild(bouton);
+import quiz from "./quiz-femmes-scientifiques.json" assert { type: "json" };
 
-bouton.addEventListener('click', async () => {
-bouton.remove ()
-const { questions } = await import('./questions.js')
-questions()
+const app = document.getElementById("app");
+
+app.innerHTML = `
+  <h1>${quiz.title}</h1>
+  <button id="start">Démarrer</button>
+`;
+
+document.getElementById("start").addEventListener("click", async () => {
+  const module = await import("./question-suivante.js");
+  module.startQuiz();
 });
-
-
-
