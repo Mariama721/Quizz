@@ -28,6 +28,8 @@ export function startQuiz() {
 `;
 
   let newQuestion = 0;
+  let scoreQuestion = 0;
+  let longeur = questions.length;
 
   function afficherQuestion() {
     const plus = questions[newQuestion];
@@ -40,6 +42,7 @@ export function startQuiz() {
       btn.onclick = () => {
         if (i === plus.correctIndex) {
           document.querySelector("h3").textContent = "Bonne réponse";
+          scoreQuestion++; 
         } else {
           document.querySelector("h3").textContent = "Mauvaise réponse";
         }
@@ -58,11 +61,15 @@ export function startQuiz() {
   boutonQS.addEventListener("click", () => {
     newQuestion++;
 
-    if (newQuestion < questions.length) {
+    if (newQuestion < longeur) {
       afficherQuestion();
     } else {
-      document.querySelector("h2").textContent = "Quiz terminé";
-      document.querySelector("h3").textContent = "";
+      document.querySelector("h2").textContent = "Quiz terminé!";
+      document.querySelector("h3").textContent = `Tu as ${scoreQuestion}/${longeur}`;
+      document.querySelector(".next").value = "RESET";
+      boutonQS.addEventListener("click", () => { 
+      startQuiz ();
+      });
     }
   });
 }

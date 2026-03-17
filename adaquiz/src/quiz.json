@@ -1,0 +1,15 @@
+{
+    "title": "Femmes scientifiques célèbres",
+    "questions": [
+        {
+            "question": "Qui est considérée comme la première programmeuse de l’histoire ?",
+            "options": ["Grace Hopper", "Ada Lovelace", "Dorothy Vaughan", "Margaret Hamilton"],
+            "correctIndex": 1
+        },
+        {
+            "question": "Dans quel domaine Fatomata Kebe est-elle principalement connue ?",
+            "options": ["La chimie", "La médecine", "L’astronomie", "La biologie"],
+            "correctIndex": 2
+        }
+    ]
+}
