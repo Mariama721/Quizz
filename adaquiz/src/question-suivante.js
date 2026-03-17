@@ -7,6 +7,7 @@ export function startQuiz() {
   app.innerHTML = `
 <header>
     <h1>${quiz.title}</h1>
+    <p></p> 
 </header>
     
 <div>
@@ -30,11 +31,14 @@ export function startQuiz() {
   let newQuestion = 0;
   let scoreQuestion = 0;
   let longeur = questions.length;
+  let compteur = 1;
 
   function afficherQuestion() {
     const plus = questions[newQuestion];
-
-    document.querySelector("h2").textContent = plus.question;
+      document.querySelector("p").textContent = `${compteur}/${longeur}`
+      compteur ++; 
+    
+      document.querySelector("h2").textContent = plus.question;
 
     const opt = document.querySelectorAll(".opt");
     opt.forEach((btn, i) => {
@@ -43,8 +47,14 @@ export function startQuiz() {
         if (i === plus.correctIndex) {
           document.querySelector("h3").textContent = "Bonne réponse";
           scoreQuestion++; 
+          scoreQuestion >5;
+          document.querySelector("h3").style.color="green";
+        
+          
         } else {
           document.querySelector("h3").textContent = "Mauvaise réponse";
+          scoreQuestion <5;
+          document.querySelector("h3").style.color="orange";
         }
 
         document.querySelector(".next").style.display = "block";
@@ -63,6 +73,7 @@ export function startQuiz() {
 
     if (newQuestion < longeur) {
       afficherQuestion();
+       
     } else {
       document.querySelector("h2").textContent = "Quiz terminé!";
       document.querySelector("h3").textContent = `Tu as ${scoreQuestion}/${longeur}`;
